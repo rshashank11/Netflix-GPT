@@ -5,7 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         header:
-          "url('https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg')",
+          "url('https://assets.nflxext.com/ffe/siteui/vlv3/a73c4363-1dcd-4719-b3b1-3725418fd91d/fe1147dd-78be-44aa-a0e5-2d2994305a13/IN-en-20231016-popsignuptwoweeks-perspective_alpha_website_large.jpg')",
         headerTwo: "url('../src/images/netflix-bg-large.jpg')",
       },
     },
@@ -16,6 +16,7 @@ export default {
       inputBg: "rgb(51, 51, 51)",
       inputText: "#8c8c8c",
       error: "#e87c03",
+      netflixRed: "#E50914",
     },
   },
   plugins: [],
