@@ -1,0 +1,7 @@
+iframe + .title {
+  display: hidden;
+}
+
+.video-list-container::-webkit-scrollbar {
+  display: none;
+}
