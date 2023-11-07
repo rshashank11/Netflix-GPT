@@ -5,29 +5,32 @@ import { useDispatch, useSelector } from "react-redux"
 import { removeUser } from "../utils/userSlice"
 import { useLoaderData } from "react-router"
 import Header from "../components/Header"
-import { getMoviesPlayingNow, getTrailerVideo } from "../api/Movies"
-import { addMovieTrailer, addMoviesPlayingNow } from "../utils/movieSlice"
+import { getMovieTrailerVideo, getMoviesPlayingNow } from "../api/Movies"
+import { addMoviesPlayingNow } from "../utils/movieSlice"
 import TrailerContainer from "../components/TrailerContainer"
 import MovieAndTVListContainer from "../components/MovieAndTVListContainer"
-import { getTVAiringToday } from "../api/TVShows"
+import { getTVAiringToday, getTVTrailerVideo } from "../api/TVShows"
 import { addTVShowsAiringToday } from "../utils/tvSlice"
+import { getTrendingToday } from "../api/Trending"
+import { addTrendingToday, addTrendingTrailer } from "../utils/trendingSlice"
 
 const Browse = () => {
   const dispatch = useDispatch()
-  const { movies, videos, tvShows } = useLoaderData()
-
+  const { movies, trailerVideos, tvShows, trendingToday } = useLoaderData()
   useEffect(() => {
     dispatch(addMoviesPlayingNow(movies))
     dispatch(addTVShowsAiringToday(tvShows))
-    const id = videos.data.id
-    const trailerVideos = videos.data.results.filter(
+    dispatch(addTrendingToday(trendingToday))
+    const id = trailerVideos.id
+    const trailerVid = trailerVideos.results.filter(
       (video) => video.type == "Trailer"
     )
-    const trailer = trailerVideos.length > 0 ? trailerVideos[0] : videos[0]
-    dispatch(addMovieTrailer({ trailer, id }))
+
+    const trailer = trailerVid.length > 0 ? trailerVid[0] : trailerVideos[0]
+    dispatch(addTrendingTrailer({ trailer, id }))
   }, [])
 
-  const moviesPlayingNow = useSelector((state) => state.movie.moviesPlayingNow)
+  const trendingTrailer = useSelector((state) => state.trending.trendingTrailer)
 
   const signOutHandler = () => {
     signOut(auth)
@@ -44,7 +47,7 @@ const Browse = () => {
           Sign Out
         </button>
       </Header>
-      {moviesPlayingNow.length ? <TrailerContainer /> : null}
+      {trendingTrailer ? <TrailerContainer /> : null}
       <MovieAndTVListContainer />
     </div>
   )
@@ -53,9 +56,16 @@ const Browse = () => {
 const loader = async ({ request: { signal } }) => {
   const movies = await getMoviesPlayingNow({ signal })
   const tvShows = await getTVAiringToday({ signal })
+  const trendingToday = await getTrendingToday({ signal })
   const index = Math.floor(Math.random() * (19 - 0 + 1)) + 0
-  const videos = await getTrailerVideo(movies[index].id)
-  return { movies, videos, tvShows }
+  var trailerVideos
+  if (trendingToday[index].media_type == "movie") {
+    trailerVideos = await getMovieTrailerVideo(trendingToday[index].id)
+  } else if (trendingToday[index].media_type == "tv") {
+    trailerVideos = await getTVTrailerVideo(trendingToday[index].id)
+  }
+
+  return { movies, trailerVideos: trailerVideos.data, tvShows, trendingToday }
 }
 
 export const browseRoute = {
