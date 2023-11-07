@@ -4,29 +4,35 @@ import "../App.css"
 import { useChangeOnScroll } from "../hooks/useChangeOnScroll"
 
 const TrailerContainer = () => {
-  const { trailer, id } = useSelector((state) => state.movie.movieTrailer)
-  const moviesPlayingNow = useSelector((state) => state.movie.moviesPlayingNow)
+  const { trailer, id } = useSelector((state) => state.trending.trendingTrailer)
+
+  const trendingToday = useSelector((state) => state.trending.trendingToday)
+
   const isScrolling = useChangeOnScroll(50)
   return (
     <div className="relative -mt-[200px] mb-5 w-full">
       <div className="absolute bottom-[350px]">
-        {moviesPlayingNow.map((movie) => {
-          if (movie.id === id) {
-            return (
-              <div
-                className={`p-2 w-[400px] pl-10 bg-gradient-to-r from-black ${
-                  isScrolling ? "hidden" : "block"
-                }`}
-                key={movie.id}
-              >
-                <p className="text-2xl font-bold op text-white">
-                  {movie.original_title}
-                </p>
-                <p>{movie.overview}</p>
-              </div>
-            )
-          }
-        })}
+        {Array.isArray(trendingToday)
+          ? trendingToday.map((item) => {
+              if (item.id === id) {
+                return (
+                  <div
+                    key={item.id}
+                    className={`p-2 w-[400px] pl-10 bg-gradient-to-r from-black ${
+                      isScrolling ? "hidden" : "block"
+                    }`}
+                  >
+                    <p className="text-2xl font-bold op text-white">
+                      {item.title ? item.title : item.name}
+                    </p>
+                    <p className="h-[120px] leading-[20px] overflow-hidden">
+                      {item.overview}
+                    </p>
+                  </div>
+                )
+              }
+            })
+          : null}
       </div>
       <iframe
         className="w-full aspect-video "
