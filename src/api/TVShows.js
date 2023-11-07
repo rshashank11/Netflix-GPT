@@ -9,7 +9,7 @@ export const getTVAiringToday = async (options) => {
   return tvShows
 }
 
-// export const getTrailerVideo = async (movieId) => {
-//   const data = await baseAPI.get(`/movie/${movieId}/videos`)
-//   return data
-// }
+export const getTVTrailerVideo = async (tvId) => {
+  const data = await baseAPI.get(`/tv/${tvId}/videos`)
+  return data
+}

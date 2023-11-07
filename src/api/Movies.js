@@ -6,7 +6,7 @@ export const getMoviesPlayingNow = async (options) => {
   return movies
 }
 
-export const getTrailerVideo = async (movieId) => {
+export const getMovieTrailerVideo = async (movieId) => {
   const data = await baseAPI.get(`/movie/${movieId}/videos`)
   return data
 }
