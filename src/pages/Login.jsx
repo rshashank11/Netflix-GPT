@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useForm } from "react-hook-form"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../utils/firebase"
+// import { signInWithEmailAndPassword } from "firebase/auth"
+// import { auth } from "../utils/firebase"
 
 import Header from "../components/Header"
 
@@ -15,13 +15,13 @@ const Login = () => {
   } = useForm()
 
   function onSubmit(data) {
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
-        const user = userCredential.user
-      })
-      .catch((error) => {
-        setError("submit", { type: "custom", message: error.message })
-      })
+    // signInWithEmailAndPassword(auth, data.email, data.password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user
+    //   })
+    //   .catch((error) => {
+    //     setError("submit", { type: "custom", message: error.message })
+    //   })
   }
 
   return (
