@@ -4,7 +4,7 @@ const trendingSlice = createSlice({
   name: "trending",
   initialState: {
     trendingToday: null,
-    trendingTrailer: null,
+    trendingTrailer: {},
   },
   reducers: {
     addTrendingToday: (state, action) => {
