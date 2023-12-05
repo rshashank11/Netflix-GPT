@@ -1,16 +1,16 @@
+:root {
+  --button-color: white;
+}
+
 iframe + .title {
   display: hidden;
 }
 
-.video-list-container::-webkit-scrollbar {
-  display: none;
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-black;
 }
 
-.modernWay {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
+.swiper-button-next {
+  color: black;
 }
