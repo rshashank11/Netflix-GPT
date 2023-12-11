@@ -4,6 +4,7 @@ const detailsSlice = createSlice({
   name: "details",
   initialState: {
     details: { detailsData: null, mediaTypeData: null },
+    videos: {},
     trailer: {},
     credits: null,
     recommended: null,
@@ -12,6 +13,9 @@ const detailsSlice = createSlice({
   reducers: {
     addDetails: (state, action) => {
       state.details = action.payload
+    },
+    addVideos: (state, action) => {
+      state.videos = action.payload
     },
     addTrailer: (state, action) => {
       state.trailer = action.payload
@@ -31,6 +35,7 @@ const detailsSlice = createSlice({
 export default detailsSlice.reducer
 export const {
   addDetails,
+  addVideos,
   addTrailer,
   addCredits,
   addRecommended,
