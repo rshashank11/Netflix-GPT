@@ -4,7 +4,7 @@ import { browseRoute } from "../pages/Browse"
 import { detailsRoute } from "../pages/Details"
 import { moviesRoute } from "../pages/Movies"
 import { tvShowsRoute } from "../pages/TVShows"
-import GPT from "../pages/GPT"
+// import GPT from "../pages/GPT"
 
 export const router = createBrowserRouter([
   {
