@@ -1,8 +1,18 @@
 import React, { useState } from "react"
 import ReactModal from "react-modal"
 import "../App.css"
-import { getCredits, getDetails, getVideos } from "../api/Details"
-import { addCredits, addDetails, addVideos } from "../utils/detailsSlice"
+import {
+  getCredits,
+  getDetails,
+  getRecommended,
+  getVideos,
+} from "../api/Details"
+import {
+  addCredits,
+  addDetails,
+  addRecommended,
+  addVideos,
+} from "../utils/detailsSlice"
 import { useDispatch, useSelector } from "react-redux"
 import "../../node_modules/swiper/swiper.min.css"
 import "../../node_modules/swiper/swiper-bundle.min.css"
@@ -11,6 +21,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "../App.css"
 import "../index.css"
 import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone"
+import RecommendedCard from "./RecommendedCard"
 
 export const ModalReact = ({
   title,
@@ -34,9 +45,17 @@ export const ModalReact = ({
     const details = await getDetails(`/${mediaType}/${id}`, { signal })
     const credits = await getCredits(`/${mediaType}/${id}/credits`, { signal })
     const videos = await getVideos(`/${mediaType}/${id}/videos`, { signal })
+    var recommended = await getRecommended(
+      `/${mediaType}/${id}/recommendations`
+    )
+    if (recommended.results.length == 0) {
+      recommended = await getRecommended(`/${mediaType}/${id}/similar`)
+    }
+
     dispatch(addDetails({ detailsData: details, mediaTypeData: mediaType }))
     dispatch(addCredits(credits))
     dispatch(addVideos(videos))
+    dispatch(addRecommended(recommended.results))
   }
 
   function closeModal() {
@@ -59,6 +78,7 @@ export const ModalReact = ({
     creditsData.crew.filter(
       (person) => person.known_for_department === "Writing"
     )
+  const recommendedData = useSelector((state) => state.details.recommended)
   return (
     <div>
       <img
@@ -202,7 +222,7 @@ export const ModalReact = ({
 
         <div className="mt-1 bg-gradient-to-t from-[#141414] mx-1">
           <ul className="flex overflow-x-auto flex-row">
-            {videosData && videosData.results.length > 1 ? (
+            {videosData && videosData.results?.length > 1 ? (
               <Swiper
                 effect="slide"
                 loop={true}
@@ -261,6 +281,25 @@ export const ModalReact = ({
                   })}
               </Swiper>
             )}
+          </ul>
+        </div>
+        <div
+          className="mb-[100px] flex 
+        flex-col text-white"
+        >
+          <h2 className="text-xl self-start font-bold mt-10 mb-2 text-[#bcbcbc] px-6">
+            More like this
+          </h2>
+          <ul className="flex justify-evenly pl-4 flex-wrap">
+            {Array.isArray(recommendedData)
+              ? recommendedData.map((recommended) => {
+                  return (
+                    <li className="min-w-[200px]" key={recommended.id}>
+                      <RecommendedCard {...recommended} />
+                    </li>
+                  )
+                })
+              : null}
           </ul>
         </div>
       </ReactModal>

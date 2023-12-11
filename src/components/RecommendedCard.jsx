@@ -17,7 +17,9 @@ const RecommendedCard = ({ title, poster_path }) => {
         />
       )}
 
-      <p>{title}</p>
+      <p className="text-[#bcbcbc] text-sm font-normal mb-3 mt-1 w-[185px]">
+        {title}
+      </p>
     </div>
   )
 }
