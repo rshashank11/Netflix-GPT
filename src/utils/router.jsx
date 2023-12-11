@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
       //   loader: ({ request: { signal } }) => {},
       //   element: <Login />,
       // },
-      { path: "gpt", element: <GPT /> },
+      // { path: "gpt", element: <GPT /> },
       { path: "browse", ...browseRoute },
       { path: "movies", ...moviesRoute },
       { path: "tv-shows", ...tvShowsRoute },
