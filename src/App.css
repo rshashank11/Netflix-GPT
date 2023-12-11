@@ -14,3 +14,34 @@ iframe + .title {
 .swiper-button-next {
   color: black;
 }
+
+.modal {
+  z-index: 300;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: fixed;
+  margin-top: 150px;
+  background-color: #141414;
+  border: none;
+  outline: none;
+  width: 850px;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
