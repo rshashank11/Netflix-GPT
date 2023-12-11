@@ -21,7 +21,7 @@ const MovieOrTVList = ({ mediaType, title, listData }) => {
           color=""
           loop={true}
           modules={[Navigation, A11y]}
-          slidesPerView={9}
+          slidesPerView={8}
           spaceBetween={90}
           mousewheel={true}
           slidesPerGroup={4}
