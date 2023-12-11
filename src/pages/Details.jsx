@@ -1,11 +1,6 @@
 import React, { useEffect } from "react"
-import {
-  getCertifications,
-  getCredits,
-  getDetails,
-  getRecommended,
-} from "../api/Details"
-import { useLoaderData, useLocation, useParams } from "react-router"
+import { getCredits, getDetails, getRecommended } from "../api/Details"
+import { useLoaderData, useParams } from "react-router"
 import { getMovieTrailerVideo } from "../api/Movies"
 import { useDispatch, useSelector } from "react-redux"
 import TrailerContainer from "../components/TrailerContainer"
@@ -39,7 +34,7 @@ const Details = () => {
     dispatch(addRecommended(recommended))
     dispatch(addCertifications(certifications))
     const id = trailerVideos.id && trailerVideos.id
-    console.log(id)
+
     const trailerVid = trailerVideos.results.filter(
       (video) => video.type == "Trailer"
     )
@@ -52,7 +47,6 @@ const Details = () => {
   const { detailsData, mediaTypeData } = useSelector(
     (state) => state.details.details
   )
-  console.log(detailsData)
   const creditsData = useSelector((state) => state.details.credits)
   const recommendedData = useSelector((state) => state.details.recommended)
   // const certificatesData = useSelector((state) => state.details.certifications)
@@ -70,7 +64,7 @@ const Details = () => {
         />
       )}
       {mediaTypeData != null && (
-        <div className="flex">
+        <div className="flex absolute">
           <div className="w-[60%]">
             <ul className="flex gap-2 items-center">
               {/* <li>
