@@ -44,7 +44,7 @@ const Browse = () => {
   const moviesPlayingNow = useSelector((state) => state.movie.moviesPlayingNow)
   const tvShowsAiringToday = useSelector((state) => state.tv.tvShowsAiringToday)
   const { id, trailer } = useSelector((state) => state.trending.trendingTrailer)
-  console.log(trendingTodayList)
+
   return (
     <>
       {state === "loading" ||
@@ -61,6 +61,7 @@ const Browse = () => {
             if (item.id === id) {
               return (
                 <TrailerContainer
+                  key={id}
                   details={item}
                   trailerDetail={trailer}
                   trailerId={id}
