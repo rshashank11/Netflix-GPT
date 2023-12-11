@@ -20,6 +20,7 @@ iframe + .title {
   -ms-overflow-style: none;
   scrollbar-width: none;
   position: fixed;
+  overflow-y: auto;
   margin-top: 150px;
   background-color: #141414;
   border: none;
