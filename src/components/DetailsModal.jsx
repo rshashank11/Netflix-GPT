@@ -81,12 +81,18 @@ export const ModalReact = ({
   const recommendedData = useSelector((state) => state.details.recommended)
   return (
     <div>
-      <img
-        onClick={openModal}
-        className="min-w-[185px] h-[270px]"
-        src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-        alt="poster"
-      />
+      {poster_path === null ? (
+        <div className="min-w-[185px] min-h-[270px] bg-inputBg flex justify-center items-center text-center text-lg font-bold">
+          {title ? title : name}
+        </div>
+      ) : (
+        <img
+          onClick={openModal}
+          className="min-w-[185px] h-[270px]"
+          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+          alt="poster"
+        />
+      )}
       <ReactModal
         className="modal"
         overlayClassName="overlay"
