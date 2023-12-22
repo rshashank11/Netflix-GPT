@@ -1,5 +1,6 @@
 :root {
   --button-color: white;
+  --swiper-navigation-top-offset: 22px;
 }
 
 iframe + .title {
@@ -8,11 +9,23 @@ iframe + .title {
 
 .swiper-button-next,
 .swiper-button-prev {
-  @apply text-black;
+  @apply flex items-center justify-center bg-opacity-40 bg-black pb-[100px] min-h-[270px] min-w-[100px];
 }
 
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  @apply bg-opacity-70;
+}
+.swiper-button-prev {
+  @apply -ml-3;
+}
 .swiper-button-next {
-  color: black;
+  @apply -mr-3;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  @apply absolute top-1/3;
 }
 
 .modal {
