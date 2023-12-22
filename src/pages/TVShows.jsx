@@ -62,10 +62,6 @@ const TVShows = () => {
 
   return (
     <div className="text-white">
-      <Header>
-        <NavBar />
-        <button className="mr-6">Sign Out</button>
-      </Header>
       {id &&
         ratedTVShowsData.map((item) => {
           if (item.id === id) {

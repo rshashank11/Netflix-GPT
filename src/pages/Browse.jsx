@@ -18,6 +18,7 @@ import MovieOrTVList from "../components/MovieOrTVList"
 
 const Browse = () => {
   const { state } = useNavigation()
+
   const dispatch = useDispatch()
   const { movies, trailerVideos, tvShows, trendingToday } = useLoaderData()
   useEffect(() => {
@@ -44,18 +45,9 @@ const Browse = () => {
   const moviesPlayingNow = useSelector((state) => state.movie.moviesPlayingNow)
   const tvShowsAiringToday = useSelector((state) => state.tv.tvShowsAiringToday)
   const { id, trailer } = useSelector((state) => state.trending.trendingTrailer)
-
   return (
     <>
-      {state === "loading" ||
-        (state === "submitting" && (
-          <h1 className="text-white text-3xl">Loading...</h1>
-        ))}
       <div className="text-white">
-        <Header>
-          <NavBar />
-          <button className="mr-6">Sign Out</button>
-        </Header>
         {id &&
           trendingTodayList.map((item) => {
             if (item.id === id) {
