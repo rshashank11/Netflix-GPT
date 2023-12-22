@@ -4,11 +4,13 @@ import { browseRoute } from "../pages/Browse"
 import { detailsRoute } from "../pages/Details"
 import { moviesRoute } from "../pages/Movies"
 import { tvShowsRoute } from "../pages/TVShows"
+import NavLayout from "../pages/NavLayout"
 // import GPT from "../pages/GPT"
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <NavLayout />,
     children: [
       {
         index: true,
