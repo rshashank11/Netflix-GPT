@@ -9,7 +9,6 @@ import "../index.css"
 import ModalReact from "./DetailsModal"
 
 const MovieOrTVList = ({ mediaType, title, listData }) => {
-  // console.log(listData)
   return (
     <div>
       <h2 className="pl-7 text-xl font-bold leading-10 text-netflixRed tracking-tighter">
@@ -30,7 +29,6 @@ const MovieOrTVList = ({ mediaType, title, listData }) => {
         >
           {Array.isArray(listData)
             ? listData.map((item, index) => {
-                // console.log(item)
                 return (
                   <SwiperSlide key={index}>
                     <li className="min-w-[185px] " key={item.id}>
