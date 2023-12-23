@@ -22,7 +22,7 @@ const TrailerContainer = ({ details, trailerDetail, trailerId }) => {
 
   return (
     <div className="relative -mt-[200px] mb-5 w-full">
-      <div className="absolute bottom-[350px]">
+      <div className="absolute bottom-[45%]">
         <div
           key={trailerId}
           className={`p-2 pb-3 pt-3 w-[400px] pl-10 bg-gradient-to-r from-black ${
