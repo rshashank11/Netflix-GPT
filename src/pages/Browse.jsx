@@ -62,7 +62,7 @@ const Browse = () => {
             }
           })}
         <MovieAndTVListContainer>
-          <div className="relative -mt-52 z-10 bg-gradient-to-t from-black">
+          <div className="relative -mt-[300px] z-10 bg-gradient-to-t from-black">
             <MovieOrTVList
               title={"Trending Today"}
               listData={trendingTodayList}
