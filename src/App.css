@@ -10,7 +10,7 @@ iframe + .title {
 
 .swiper-button-next,
 .swiper-button-prev {
-  @apply flex items-center justify-center bg-opacity-40 bg-black pb-[100px] min-h-[270px] min-w-[100px];
+  @apply flex items-center justify-center bg-opacity-40 bg-black pb-[100px] min-h-[270px] min-w-[100px] transition-all delay-100;
 }
 
 .swiper-button-next:hover,
