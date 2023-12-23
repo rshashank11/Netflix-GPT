@@ -17,6 +17,7 @@ export default {
       inputText: "#8c8c8c",
       error: "#e87c03",
       netflixRed: "#E50914",
+      grey: "grey",
     },
   },
   plugins: [],
