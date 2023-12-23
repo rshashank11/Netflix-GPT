@@ -26,6 +26,5 @@ export const getCertifications = async (url, options) => {
 
 export const getVideos = async (url, options) => {
   const data = await baseAPI.get(url, options)
-  console.log(data.data)
   return data.data
 }
