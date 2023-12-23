@@ -82,7 +82,7 @@ export const ModalReact = ({
   return (
     <div>
       {poster_path === null ? (
-        <div className="min-w-[185px] min-h-[270px] bg-inputBg flex justify-center items-center text-center text-lg font-bold">
+        <div className="min-h-[270px] w-[185px] bg-inputBg flex justify-center flex-wrap items-center text-center text-lg font-bold">
           {title ? title : name}
         </div>
       ) : (
