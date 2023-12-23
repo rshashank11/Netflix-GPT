@@ -59,52 +59,48 @@ const Movies = () => {
   const upcomingMoviesData = useSelector((state) => state.movie.upcomingMovies)
   const { id, trailer } = useSelector((state) => state.movie.movieTrailer)
 
-  if (state === "loading" || state === "submitting") {
-    return <h1 className="text-red text-3xl">Loading...</h1>
-  } else {
-    return (
-      <>
-        <div className="text-white">
-          {id &&
-            popularMoviesData.map((item) => {
-              if (item.id === id) {
-                return (
-                  <TrailerContainer
-                    details={item}
-                    trailerDetail={trailer}
-                    trailerId={id}
-                  />
-                )
-              }
-            })}
-          <MovieAndTVListContainer>
-            <div className="relative -mt-52 z-10 bg-gradient-to-t from-black">
-              <MovieOrTVList
-                mediaType={"movie"}
-                title={"Popular Movies"}
-                listData={popularMoviesData}
-              />
-            </div>
+  return (
+    <>
+      <div className="text-white">
+        {id &&
+          popularMoviesData.map((item) => {
+            if (item.id === id) {
+              return (
+                <TrailerContainer
+                  details={item}
+                  trailerDetail={trailer}
+                  trailerId={id}
+                />
+              )
+            }
+          })}
+        <MovieAndTVListContainer>
+          <div className="relative -mt-52 z-10 bg-gradient-to-t from-black">
             <MovieOrTVList
               mediaType={"movie"}
-              title={"Now Playing Movies"}
-              listData={moviesPlayingNowData}
+              title={"Popular Movies"}
+              listData={popularMoviesData}
             />
-            <MovieOrTVList
-              mediaType={"movie"}
-              title={"Rated Movies"}
-              listData={ratedMoviesData.results}
-            />
-            <MovieOrTVList
-              mediaType={"movie"}
-              title={"Upcoming Movies"}
-              listData={upcomingMoviesData.results}
-            />
-          </MovieAndTVListContainer>
-        </div>
-      </>
-    )
-  }
+          </div>
+          <MovieOrTVList
+            mediaType={"movie"}
+            title={"Now Playing Movies"}
+            listData={moviesPlayingNowData}
+          />
+          <MovieOrTVList
+            mediaType={"movie"}
+            title={"Rated Movies"}
+            listData={ratedMoviesData.results}
+          />
+          <MovieOrTVList
+            mediaType={"movie"}
+            title={"Upcoming Movies"}
+            listData={upcomingMoviesData.results}
+          />
+        </MovieAndTVListContainer>
+      </div>
+    </>
+  )
 }
 
 const loader = async ({ request: { signal } }) => {

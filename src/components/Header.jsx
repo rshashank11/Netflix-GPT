@@ -10,8 +10,6 @@ import { Link } from "react-router-dom"
 
 const Header = ({ children }) => {
   const isScrolling = useChangeOnScroll(20)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -41,7 +39,7 @@ const Header = ({ children }) => {
         <img
           className="h-auto ml-6 w-52"
           src={netflixLogo}
-          alt="netflix-logo"
+          alt="Netflix Logo"
         />
       </Link>
       {children}

@@ -30,7 +30,6 @@ const TVShows = () => {
     onTheAir,
     trailerVideos,
   } = useLoaderData()
-  console.log(onTheAir)
   useEffect(() => {
     dispatch(addTVOnTheAir(onTheAir))
     dispatch(addPopularTVShows(popularTVShows))
@@ -52,7 +51,6 @@ const TVShows = () => {
   ])
 
   const onTheAirData = useSelector((state) => state.tv.tvOnTheAir)
-  console.log(onTheAirData)
   const popularTVShowsData = useSelector((state) => state.tv.popularTVShows)
   const tvShowsAiringTodayData = useSelector(
     (state) => state.tv.tvShowsAiringToday
