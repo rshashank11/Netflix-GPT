@@ -32,9 +32,10 @@ const Header = ({ children }) => {
 
   return (
     <div
-      className={`header z-20 sticky top-0
-      bg-gradient-to-b from-black
-      } flex justify-between w-full h-[90px] `}
+      className={`header z-20 sticky top-0 transition-all duration-500 ${
+        isScrolling ? "bg-black" : "bg-gradient-to-b from-black"
+      }
+       flex justify-between w-full h-[90px]  `}
     >
       <Link to="/browse">
         <img
