@@ -14,14 +14,13 @@ const MovieOrTVList = ({ mediaType, title, listData }) => {
       <h2 className="pl-7 text-xl font-bold leading-10 text-netflixRed tracking-tighter">
         {title}
       </h2>
-      <ul className="pl-3 min-w-full  mb-10">
+      <ul className="pl-3 min-w-full mb-10">
         <Swiper
           effect="slide"
           color=""
           loop={true}
           modules={[Navigation, A11y]}
           slidesPerView={8}
-          spaceBetween={90}
           mousewheel={true}
           slidesPerGroup={4}
           speed={500}
