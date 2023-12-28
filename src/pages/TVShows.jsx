@@ -74,7 +74,7 @@ const TVShows = () => {
           }
         })}
       <MovieAndTVListContainer>
-        <div className="relative -mt-52 z-10 bg-gradient-to-t from-black">
+        <div className="relative -mt-[200px] z-10 bg-gradient-to-t from-black">
           <MovieOrTVList
             mediaType={"tv"}
             title={"Popular TV Shows"}

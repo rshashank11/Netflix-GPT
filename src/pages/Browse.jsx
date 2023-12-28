@@ -30,7 +30,9 @@ const Browse = () => {
       (video) => video.type == "Trailer"
     )
     const trailer =
-      trailerVid.length > 0 ? trailerVid[0] : trailerVideos.results[0]
+      trailerVid.length > 0
+        ? trailerVid[trailerVid.length - 1]
+        : trailerVideos.results[0]
     dispatch(addTrendingTrailer({ trailer, id }))
   }, [movies, trailerVideos, tvShows, trendingToday])
   // const signOutHandler = () => {
@@ -62,7 +64,7 @@ const Browse = () => {
             }
           })}
         <MovieAndTVListContainer>
-          <div className="relative -mt-[300px] z-10 bg-gradient-to-t from-black">
+          <div className="relative -mt-[200px] z-10 bg-gradient-to-t from-black">
             <MovieOrTVList
               title={"Trending Today"}
               listData={trendingTodayList}
