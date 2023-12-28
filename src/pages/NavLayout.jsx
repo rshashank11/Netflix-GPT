@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar"
 import { ScrollRestoration } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Loading from "../components/Loading"
 
 const NavLayout = () => {
   const { state } = useNavigation()
@@ -15,8 +16,8 @@ const NavLayout = () => {
       </Header>
       <ScrollRestoration />
       {state === "loading" ? (
-        <div className="w-screen h-screen mx-auto mt-10 text-red text-2xl">
-          Loading...
+        <div className="w-screen h-screen flex justify-center items-start mt-10 text-red text-2xl">
+          <Loading />
         </div>
       ) : (
         <Outlet />
